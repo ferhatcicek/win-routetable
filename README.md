@@ -11,7 +11,7 @@ Windows 10 / 11 üzerinde `Get-NetRoute` yönlendirme tablosunu (routing table) 
 - **Hızlı Arama & Filtreleme:** Hedef prefix, gateway/nexthop, arayüz adı, protokol veya metrik bazında anlık arama.
 - **Otomatik & Manuel Yenileme:** Ayarlanabilir aralıklarla (2s, 5s, 10s, 30s, 60s) otomatik arka plan yenilemesi.
 - **Reverse DNS (PTR) Çözümleme:** Çok iş parçacıklı (multithreaded) paralel DNS sorgulama ve bellek içi önbellek (cache) ile IP adreslerinin alan adlarını hızlıca çözümleme.
-- **PowerShell Enum Açıklamaları:** Windows'un sayısal döndürdüğü yönlendirme protokollerini okunabilir metne dönüştürür (örn. `2 (NetMgmt)`, `3 (Icmp)`, `8 (Rip)`, `12 (Ospf)`, `13 (Bgp)`).
+- **PowerShell Enum Açıklamaları:** Windows'un sayısal döndürdüğü yönlendirme protokollerini okunabilir metne dönüştürür (örn. `2 (Local)`, `3 (NetMgmt)`, `4 (Icmp)`, `8 (Rip)`, `13 (Ospf)`, `14 (Bgp)`).
 - **Format Düzeltmeleri:** `ValidLifetime` ve `PreferredLifetime` TimeSpan nesneleri düzgün biçimlendirilmiş metin olarak sunulur.
 - **Düşük Kaynak Tüketimi:** Hash tabanlı durum kontrolü ile gereksiz DOM güncellemelerini engeller.
 - **Alternatif Masaüstü GUI:** İstenirse Tkinter tabanlı masaüstü uygulaması (`windows_route_gui.py`) ile de çalıştırılabilir.
