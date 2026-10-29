@@ -52,9 +52,15 @@ Windows 10 / 11 üzerinde `Get-NetRoute` yönlendirme tablosunu (routing table) 
 
 2. Uygulamayı başlatın:
    ```cmd
+   # Standart port (5000) ile çalıştırmak için:
    run.bat
+
+   # Farklı bir port (örn: 8080) ile çalıştırmak için:
+   run.bat 8080
+   # veya
+   run.bat --port 8080
    ```
-   *Tarayıcınız otomatik olarak `http://127.0.0.1:5000` adresinde açılacaktır.*
+   *Tarayıcınız otomatik olarak belirtilen portta (varsayılan: `http://127.0.0.1:5000`) açılacaktır.*
 
 ---
 
@@ -68,13 +74,20 @@ python -m venv .venv
 # 2. Bağımlılıkları yükleyin
 pip install -r requirements.txt
 
-# 3. Web uygulamasını çalıştırın
+# 3. Web uygulamasını çalıştırın (varsayılan 5000 portu)
 python app.py
+
+# Farklı bir port ile çalıştırmak için:
+python app.py 8080
+# veya
+python app.py -p 8080
+# veya
+python app.py --port 8080
 ```
 
 Tarayıcınızda açın:
 ```text
-http://127.0.0.1:5000
+http://127.0.0.1:5000 (veya belirlediğiniz port)
 ```
 
 ---

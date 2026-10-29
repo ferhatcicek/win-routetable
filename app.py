@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, jsonify, render_template_string, request
-import subprocess, json, hashlib, socket, ipaddress, threading
+import subprocess, json, hashlib, socket, ipaddress, threading, argparse, os, sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 app = Flask(__name__)
@@ -595,6 +595,17 @@ def api_dns():
     except Exception as e:return jsonify({"error":str(e)}),500
 
 if __name__=="__main__":
+    parser = argparse.ArgumentParser(description="Windows 11 Route Table Monitor")
+    parser.add_argument("port_pos", nargs="?", type=int, default=None, help="Port numarası (örn: 8080)")
+    parser.add_argument("-p", "--port", type=int, default=None, help="Port numarası (varsayılan: 5000)")
+    parser.add_argument("--host", default="127.0.0.1", help="Host adresi (varsayılan: 127.0.0.1)")
+    args = parser.parse_args()
+
+    port = args.port or args.port_pos or int(os.environ.get("PORT", 5000))
+    if not (1 <= port <= 65535):
+        print(f"Hata: Geçersiz port numarası ({port}). Port 1-65535 arasında olmalıdır.", file=sys.stderr)
+        sys.exit(1)
+
     print("Windows 11 Route Table Monitor")
-    print("http://127.0.0.1:5000")
-    app.run(host="127.0.0.1",port=5000,debug=False,threaded=True)
+    print(f"http://{args.host}:{port}")
+    app.run(host=args.host, port=port, debug=False, threaded=True)
